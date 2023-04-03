@@ -97,7 +97,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
             return "";
         }
 
-        return NgxMatTimepickerAdapter.toLocaleTimeString(this._value, {format: this.format, locale: this._locale});
+        return NgxMatTimepickerAdapter.getIsoTimeStr(this._value);
     }
 
     @Input()
@@ -109,7 +109,7 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
             return;
         }
         const time = NgxMatTimepickerAdapter.formatTime(value, {locale: this._locale, format: this.format});
-        const isAvailable = NgxMatTimepickerAdapter.isTimeAvailable(
+        const isAvailable = true || NgxMatTimepickerAdapter.isTimeAvailable(
             time,
             this._min as DateTime,
             this._max as DateTime,
@@ -195,8 +195,10 @@ export class NgxMatTimepickerDirective implements ControlValueAccessor, OnDestro
 
     @HostListener("change", ["$event"])
     updateValue(value: string) {
-        this.value = value;
-        this._onChange(value);
+      if (!value || Object.prototype.toString.call(value) === "[object String]") {
+        this.value = NgxMatTimepickerAdapter.getIsoTimeStr(value);
+        this._onChange(NgxMatTimepickerAdapter.getIsoTimeStr(value));
+      }
     }
 
     writeValue(value: string): void {

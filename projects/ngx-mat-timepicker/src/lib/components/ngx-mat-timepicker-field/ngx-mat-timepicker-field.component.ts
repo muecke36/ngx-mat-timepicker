@@ -258,7 +258,7 @@ export class NgxMatTimepickerFieldComponent implements OnInit, OnDestroy, Contro
     }
 
     private _emitLocalTimeChange(time: string): void {
-        const localTime = NgxMatTimepickerAdapter.toLocaleTimeString(time, {format: this.format, locale: this._locale});
+        const localTime = NgxMatTimepickerAdapter.getIsoTimeStr(time);
 
         this._onChange(localTime);
         this.timeChanged.emit(localTime);

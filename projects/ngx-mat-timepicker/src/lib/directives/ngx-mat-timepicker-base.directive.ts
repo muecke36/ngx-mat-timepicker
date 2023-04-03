@@ -131,10 +131,7 @@ export class NgxMatTimepickerBaseDirective implements OnInit, OnDestroy {
     }
 
     protected _onTimeChange(): void {
-        const time = NgxMatTimepickerAdapter.toLocaleTimeString(this._timepickerSrv.getFullTime(this.data.format), {
-            locale: this._locale,
-            format: this.data.format
-        });
+        const time = NgxMatTimepickerAdapter.getIsoTimeStr(this._timepickerSrv.getFullTime(this.data.format));
 
         this.data.timepickerBaseRef.timeChanged.emit(time);
     }

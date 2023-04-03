@@ -1,8 +1,8 @@
 {
-  "name": "ngx-mat-timepicker",
-  "version": "15.1.6",
+  "name": "@auronet.timepicker/ngx-mat-timepicker",
+  "version": "15.1.15",
   "license": "MIT",
-  "description": "ngx-mat-timepicker is an Angular material 9+ extension to add time pickers!",
+  "description": "Forge of ngx-mat-timepicker",
   "homepage": "https://tonysamperi.github.io/ngx-mat-timepicker",
   "repository": {
     "type": "git",
